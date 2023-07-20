@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Age cal</title>
+  <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+  <div class="container">
+    <H1>Mst Mukta <br>amar age dekhte 28/10/1993 input dao</H1>
+    <h2>Age Calculator</h2>
+    <label for="birthdate">Enter your birthdate:</label>
+    <input type="date" id="birthdate" required>
+    <button onclick="calculateAge()">Calculate Age</button>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    function calculateAge() {
+      const birthdate = new Date(document.getElementById("birthdate").value);
+      const currentDate = new Date();
+
+      if (birthdate >= currentDate) {
+        document.getElementById("result").innerText = "Please enter a valid birthdate.";
+        return;
+      }
+
+      const ageInMillis = currentDate - birthdate;
+      const ageInYears = Math.floor(ageInMillis / (365 * 24 * 60 * 60 * 1000));
+      document.getElementById("result").innerText = `Your age is ${ageInYears} years.`;
+    }
+  </script>
+</body>
+</html>
